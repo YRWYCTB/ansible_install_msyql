@@ -1,0 +1,50 @@
+- name: 1. 创建mysql用户组
+  group: name={{ MYSQL_USER }}  state=present
+
+- name: 2. 创建mysql用户
+  user: name={{ MYSQL_USER }}  group={{ MYSQL_USER }}  state=present create_home=False shell=/sbin/nologin
+
+- name: 3. 创建所需目录及权限
+  file: name={{ item }} state=directory owner={{ MYSQL_USER }} group={{ MYSQL_USER }} mode=0750 recurse=yes
+  with_items:
+  - "{{ SOURCE_DIR }}"
+  - "{{ DATA_BASE }}"
+  - "{{ DATA_BASE }}/data"
+  - "{{ DATA_BASE }}/tmp"
+  - "{{ DATA_BASE }}/logs"
+  - "/opt/mysql"
+
+- name: 4.部署MySQL
+  stat: path={{ BASE_DIR }}
+  register: base_ok
+
+- name: 4.部署MySQL Server相关软件
+  unarchive: src=mysql-{{ MYSQL_VER }}-linux-glibc2.12-x86_64.tar.xz dest=/opt/mysql owner={{ MYSQL_USER }} group={{ MYSQL_USER }}
+  when: not base_ok.stat.exists
+
+- name: 5. 创建basedir的软链 
+  file: 
+   src: /opt/mysql/mysql-{{ MYSQL_VER }}-linux-glibc2.12-x86_64
+   dest: "{{ BASE_DIR }}"
+   owner: "{{ MYSQL_USER }}"
+   group: "{{ MYSQL_USER }}"
+   state: link
+
+#复制mysql配置文件
+- name: 6. 拷贝mysql配置文件
+  template: src=my.cnf dest={{DATA_BASE}}/my{{ MYSQL_PORT }}.cnf owner=root group=root
+
+- name: 7. 把mysql命令加入PATH中
+  shell: " if [ `grep {{ BASE_DIR }}/bin /etc/profile |wc -l` -eq 0 ]; then echo export PATH=$PATH:{{ BASE_DIR }}/bin >> /etc/profile && source /etc/profile; else source /etc/profile; fi"
+
+- name: 8. mysql初始化
+  shell: "{{ BASE_DIR }}/bin/mysqld --defaults-file={{ DATA_BASE }}/my{{ MYSQL_PORT }}.cnf --initialize-insecure --user={{ MYSQL_USER }}"
+
+- name: 9. 启动mysql
+  shell: "{{ BASE_DIR }}/bin/mysqld_safe --defaults-file={{ DATA_BASE }}/my{{ MYSQL_PORT }}.cnf &"
+
+- name: 10. 生成初始化脚本
+  template: src=after_start.sh dest=/tmp/ owner=root group=root
+
+- name: 11. 执行生成的脚本
+  shell: bash /tmp/after_start.sh

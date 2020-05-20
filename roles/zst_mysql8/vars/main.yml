@@ -1,0 +1,9 @@
+# #定义mysql安装中的变量
+MYSQL_VER: 8.0.20
+MYSQL_USER: mysql
+MYSQL_PORT: 3307
+MYSQL_PASSWD: 123456789
+SOURCE_DIR: /software
+BASE_DIR: /usr/local/mysql
+DATA_BASE: /data/mysql/mysql{{ MYSQL_PORT }}
+DATA_DIR: /data/mysql/mysql{{ MYSQL_PORT }}/data

@@ -1,0 +1,6 @@
+---
+- name: 解压mysql-8.0.19-linux-glibc2.12-x86_64.tar.xz
+  unarchive:
+    src: mysql-8.0.19-linux-glibc2.12-x86_64.tar.xz
+    dest: /opt/mysql/
+

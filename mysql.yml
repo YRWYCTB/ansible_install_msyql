@@ -1,0 +1,4 @@
+---
+- hosts: mysql
+  roles:
+  - zst_mysql57_ubuntu
