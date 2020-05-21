@@ -97,3 +97,7 @@ DATA_BASE: /data/mysql/mysql{{ MYSQL_PORT }}
 
 DATA_DIR: /data/mysql/mysql{{ MYSQL_PORT }}/data
 
+8、run command 
+```sh
+ansible-playbook mysql.yml
+```
