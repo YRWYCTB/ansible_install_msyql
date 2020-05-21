@@ -1,5 +1,6 @@
 # ansible_install_msyql
 install ansible fist 
+
 copy file to /ect/ansible
 the dir is as follows
 ```
