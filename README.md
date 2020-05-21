@@ -75,15 +75,25 @@ cat myslq.yml
 ```sh
 [root@dzst150 roles]# cat zst_mysql57/vars/main.yml 
 ```
-# #定义mysql安装中的变量
+定义mysql安装中的变量
+
 MYSQL_VER: 5.7.30
+
 MYSQL_VER_MAIN: "{{ MYSQL_VER.split('.')[0] }}.{{ MYSQL_VER.split('.')[1] }}"
+
 DOWNLOAD_URL: https://mirrors.cloud.tencent.com/mysql/downloads/MySQL-{{ MYSQL_VER_MAIN }}/mysql-{{ MYSQL_VER }}-linux-glibc2.12-x86_64.tar.gz
+
 MYSQL_USER: mysql
+
 MYSQL_PORT: 3307
+
 MYSQL_PASSWD: 123456789
+
 SOURCE_DIR: /software
+
 BASE_DIR: /usr/local/mysql57
+
 DATA_BASE: /data/mysql/mysql{{ MYSQL_PORT }}
+
 DATA_DIR: /data/mysql/mysql{{ MYSQL_PORT }}/data
 
