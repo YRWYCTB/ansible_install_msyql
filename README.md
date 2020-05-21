@@ -99,5 +99,5 @@ DATA_DIR: /data/mysql/mysql{{ MYSQL_PORT }}/data
 
 8、run command 
 ```sh
-ansible-playbook mysql.yml
+[root@dzst150 roles]# ansible-playbook mysql.yml
 ```
