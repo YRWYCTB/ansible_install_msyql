@@ -8,7 +8,6 @@ the dir is as follows
 /etc/ansible
 ```
 [root@dzst150 ansible]# tree ./
-```
 ./
 |-- ansible.cfg
 |-- hosts
@@ -50,5 +49,4 @@ the dir is as follows
         `-- vars
             `-- main.yml
 
-15 directories, 24 files
-[root@dzst150 ansible]# 
+```
