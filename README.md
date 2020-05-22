@@ -1,5 +1,6 @@
 # ansible_install_msyql
 脚本来自吴炳锡老老师
+
 1、install ansible first 
 
 2、copy file to /ect/ansible
