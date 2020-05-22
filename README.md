@@ -102,6 +102,7 @@ DATA_DIR: /data/mysql/mysql{{ MYSQL_PORT }}/data
 [root@dzst150 roles]# ansible-playbook mysql.yml -e "MYSQL_PORT=3316"
 ```
  不指定端口将使使用配置文件中端口
+ 
   |   `-- vars
   
     |       `-- main.yml
