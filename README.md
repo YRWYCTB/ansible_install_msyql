@@ -1,5 +1,5 @@
 # ansible_install_msyql
-1、install ansible fist 
+1、install ansible first 
 
 2、copy file to /ect/ansible
 
@@ -103,4 +103,5 @@ DATA_DIR: /data/mysql/mysql{{ MYSQL_PORT }}/data
 ```
  不指定端口将使使用配置文件中端口
   |   `-- vars
+  
     |       `-- main.yml
