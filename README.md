@@ -1,5 +1,5 @@
 # ansible_install_msyql
-脚本来自吴炳锡老老师
+脚本来自吴炳锡老师
 
 1、install ansible first 
 
