@@ -1,4 +1,5 @@
 #!/bin/bash
+#该脚本中增加MySQL实例启动后需要初始化的一些信息，如：创建用户，创建数据库等。
 echo "安装的mysql版本 {{ MYSQL_VER }}"
 echo "DATA_DIR {{ DATA_DIR }}"
 
