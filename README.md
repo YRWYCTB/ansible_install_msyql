@@ -57,14 +57,14 @@ the dir is as follows
 
 4、edit hosts,add destination ip or hostname to hosts
 ```sh
-cat host
+cat hosts
 ```
 [mysql]
 172.18.0.160
 
 5、edit mysql.yml
 ```sh
-cat myslq.yml
+cat mysql.yml
 ```
 ---
 - hosts: mysql
