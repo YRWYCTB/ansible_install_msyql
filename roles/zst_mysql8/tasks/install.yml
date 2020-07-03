@@ -46,5 +46,5 @@
 - name: 10. 生成初始化脚本
   template: src=after_start.sh dest=/tmp/ owner=root group=root
 
-- name: 11. 执行生成的脚本
+- name: 11. 执行指定的的脚本，进行数据库用户等创建
   shell: bash /tmp/after_start.sh
